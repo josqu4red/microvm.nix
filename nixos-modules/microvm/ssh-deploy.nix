@@ -178,10 +178,10 @@ in
 
         # refresh nix db which is required for nix-env -p ... --set
         echo "Refreshing Nix database"
-        ${paths.nixOut}/bin/nix-store --load-db < ${paths.closureInfoOut}/registration
-        ${paths.nixOut}/bin/nix-env -p /nix/var/nix/profiles/system --set ${paths.toplevelOut}
+        sudo ${paths.nixOut}/bin/nix-store --load-db < ${paths.closureInfoOut}/registration
+        sudo ${paths.nixOut}/bin/nix-env -p /nix/var/nix/profiles/system --set ${paths.toplevelOut}
 
-        ${paths.toplevelOut}/bin/switch-to-configuration "''${@:-switch}"
+        sudo ${paths.toplevelOut}/bin/switch-to-configuration "''${@:-switch}"
         __SSH__
       ''
     );
